@@ -1,0 +1,7 @@
+data:
+  image_base_path: "/external/rprshnas01/external_data/uk_biobank/imaging/brain/nifti/t1_surface/data/"
+  train_data_path: "./train_matched.csv"
+  val_data_path: "./val_matched.csv"
+  test_data_path: "./test_matched.csv"
+  batch_size: 32
+  num_workers: 0

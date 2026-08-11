@@ -1,0 +1,50 @@
+data:
+  image_base_path: "/external/rprshnas01/external_data/uk_biobank/imaging/brain/nifti/t1_structural/data/"
+  train_data_path: "./train_matched_tem.csv"
+  val_data_path: "./val_matched_tem.csv"
+  test_data_path: "./test_matched_tem.csv"
+  batch_size: 32
+  num_workers: 0
+
+model:
+  input_size: 128
+  arch: ours
+  nhid: 512
+  num_classes: 2
+  expansion: 8
+  num_blocks: 0
+  n_label: 1
+  type_name: conv3x3x3
+  norm_type: Instance
+  input_dimensions:
+    input_channels: 1
+    feature_dimension: 1024
+    depth: 256
+    height: 256
+    width: 256
+    
+adv_model:
+  nhid: 36
+  out_dim: 12
+
+training_parameters:
+  use_age: False
+  pretrain: "./result/cnn_model.pth" 
+  max_iter: 16000
+  start_epoch: 0
+  epochs: 200
+  print_freq: 10
+  max_grad_l2_norm:
+  report_interval: 100
+  snapshot_interval: 1000
+  
+optimizer:
+  method: SGD
+  par:
+    lr: 0.01
+    weight_decay: 0.000
+
+
+logging:
+  log_interval: 10
+  log_dir: "logs"
